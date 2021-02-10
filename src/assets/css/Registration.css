@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+.reg {
+    grid-row: 1;
+    grid-column: 2;
+    width: 500px;
+    height: 750px;
+    border-radius: 5px;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, 10%);
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    box-shadow: 0 0 15px rgba(0, 0, 0, .3);
+}
+
+.reg .reg-inner {
+    width: 80%;
+    height: 90%;
+}
+
+.reg .reg-inner #span-top {
+    background-color: #7750F6;
+    padding: 5px;
+    border-radius: 50px;
+    font-size: 12px;
+    border: 2px solid #1c1e23
+}
+
+.reg .reg-inner .span-div {
+    width: 26px;
+    background-color: #7750F6;
+    border-radius: 50px;
+    padding: 1px;
+}
+
+.reg .reg-inner .reg-head h3 {
+    font-size: 22px;
+    width: 95%;
+}
+
+.reg .reg-inner .reg-head p {
+    font-size: 16px;
+    line-height: 25px;
+    color: rgba(255, 255, 255, .6);
+}
+
+.reg .reg-inner input {
+    border-radius: 6px;
+    outline: #7750F6;
+}
+
+.reg .reg-inner input[type="text"], input[type="email"], input[type="password"] {
+    width: 98%;
+    height: 45px;
+    margin-top: 20px;
+    border: 2px solid #26292D;
+    background-color: transparent;
+    text-indent: 20px;
+    color: white;
+}
+
+.reg .reg-inner input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+    border: 2px solid #7750F6;
+}
+
+.reg .reg-inner input[type="text"]::placeholder, input[type="email"]::placeholder, input[type="password"]::placeholder {
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+}
+
+.reg .reg-inner input[type="submit"] {
+    width: 100%;
+    height: 50px;
+    margin-top: 15px;
+    background-color: #7750F6;
+    border: none;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.reg .reg-inner form input[type="submit"]:hover {
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.reg .reg-inner .terms {
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.reg .reg-inner .terms p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, .6);
+}
+
+.reg .reg-inner .terms a {
+    color: #7750F6;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.reg .reg-inner .bottom {
+    text-align: center;
+    padding-bottom: 30px;
+}
+
+.reg .reg-inner .bottom p {
+    color: rgba(255, 255, 255, .6);
+    font-size: 14px;
+    margin: 20px;
+}
+
+.reg .reg-inner .bottom img {
+    width: 25px;
+    height: 25px;
+    border: 2px solid #26292D;
+    border-radius: 50px;
+    padding: 15px;
+    margin-left: 10px;
+}
+
+.reg .reg-inner .bottom img:hover {
+    cursor: pointer;
+    background-color: rgba(119, 80, 246, .6);
+    border: 2px solid #7750F6;
+    transition: all 300ms;
+}
+
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 21px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 18px;
+    width: 18px;
+    border-radius: 5px;
+    border: 2px solid #7750F6;
+}
+
+.container:hover input ~ .checkmark {
+    background-color: #26292D;
+    transition: all 300ms;
+}
+
+.container input:checked ~ .checkmark {
+    background-color: #7750F6;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.container .checkmark:after {
+    left: 5px;
+    top: 0;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1C1E23;
+    }
+
+    .reg {
+        background-color: #1c1e23;
+        color: white;
+    }
+
+    .reg .reg-inner .reg-head p {
+        color: rgba(255, 255, 255, .6);
+    }
+
+    .reg .reg-inner .terms p {
+        color: rgba(255, 255, 255, .6);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    body {
+        background-color: #ffffff;
+    }
+
+    .reg {
+        background-color: #ffffff;
+        color: #1C1E23;
+    }
+
+    .reg .reg-inner .reg-head p {
+        color: rgba(0, 0, 0, .6);
+    }
+
+    .reg .reg-inner .terms p {
+        color: rgba(0, 0, 0, .6);
+    }
+}
