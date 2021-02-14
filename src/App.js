@@ -20,4 +20,6 @@ class App extends React.Component {
     }
 }
 
+export let isLoading = true;
+
 export default App;

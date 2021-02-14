@@ -24,7 +24,7 @@ export default function App() {
     let history = useHistory();
 
     const register = () => {
-        Axios.post('http://192.168.2.106:8080/register', {
+        Axios.post('http://192.168.2.100:8080/register', {
             username: usernameReg,
             password: passwordReg,
             email: emailReg

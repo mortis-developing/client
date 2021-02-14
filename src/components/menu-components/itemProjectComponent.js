@@ -4,10 +4,13 @@ import thumbnail from '../../assets/images/static/thumbnail.png';
 
 import Axios from "axios";
 
+Axios.defaults.withCredentials = true;
+
 class itemProjectComponent extends React.Component {
 
     constructor(props) {
         super(props);
+        Axios.defaults.withCredentials = true;
     }
 
     handleClick = id => () => {

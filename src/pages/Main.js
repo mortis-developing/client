@@ -8,7 +8,7 @@ import Login from "../pages/Login";
 
 import { useHistory } from 'react-router-dom';
 
-export default function Main() {
+function Main() {
 
     const [isLoading, setLoading] = useState(true);
 
@@ -18,7 +18,7 @@ export default function Main() {
     let history = useHistory();
 
     useEffect(() => {
-       Axios.get("http://192.168.2.106:8080/login").then((response) => {
+       Axios.get("http://192.168.2.100:8080/login").then((response) => {
            if(response.data.loggedIn === true) {
                setRole(response.data.user[0].role);
 
@@ -46,3 +46,5 @@ export default function Main() {
         </>
     );
 }
+
+export default Main;

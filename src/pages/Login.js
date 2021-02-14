@@ -3,6 +3,8 @@ import '../assets/css/Login.css';
 import React, {useEffect, useState} from 'react';
 import Axios from 'axios';
 
+import { isLoading } from '../App';
+
 import { useHistory } from 'react-router-dom';
 
 export default function Login() {
@@ -16,12 +18,13 @@ export default function Login() {
     let history = useHistory();
 
     const login = () => {
-        Axios.post('http://192.168.2.106:8080/login', {
+        Axios.post('http://192.168.2.100:8080/login', {
             username: username,
             password: password
         }).then((response) => {
             if (response.data.message) {
                 setLoginStatus(response.data.message);
+                console.log(response.data.message);
             } else {
                 setLoginStatus(response.data[0].username);
                 history.push('/');
@@ -30,7 +33,8 @@ export default function Login() {
     };
 
     useEffect(() => {
-        Axios.get("http://192.168.2.106:8080/login").then((response) => {
+
+        Axios.get("http://192.168.2.100:8080/login").then((response) => {
             if(response.data.loggedIn === true) {
                 setLoginStatus(response.data.user[0].username);
             }

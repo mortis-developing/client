@@ -14,6 +14,8 @@ class SideBarMenu extends React.Component {
     constructor(props) {
         super(props);
 
+        Axios.defaults.withCredentials = true;
+
         this.state = {
             projects: '',
             projects_length: 0,
@@ -30,7 +32,8 @@ class SideBarMenu extends React.Component {
     }
 
     getProjectList() {
-        Axios.get("http://192.168.2.106:8080/login").then((response) => {
+        Axios.defaults.withCredentials = true;
+        Axios.get("http://192.168.2.100:8080/login").then((response) => {
             response.data.user.forEach(row => this.state.projects = row.projects);
 
             this.state.projects_length = this.state.projects.split(',').length;
