@@ -2,7 +2,7 @@ import '../assets/css/Registration.css';
 
 import React, {useState} from 'react';
 import Axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
 
 import google_dark from '../assets/images/dark/registration/google.svg';
 import github_dark from '../assets/images/dark/registration/github.svg';
@@ -13,8 +13,6 @@ import google_light from '../assets/images/light/registration/google.svg';
 import github_light from '../assets/images/light/registration/github.svg';
 import facebook_light from '../assets/images/light/registration/facebook.svg';
 import twitter_light from '../assets/images/light/registration/twitter.svg';
-import lightLogo from "../assets/images/light/menu/logo.svg";
-import darkLogo from "../assets/images/dark/menu/logo.svg";
 
 export default function App() {
 
@@ -26,7 +24,7 @@ export default function App() {
     let history = useHistory();
 
     const register = () => {
-        Axios.post('http://localhost:8080/register', {
+        Axios.post('http://192.168.2.106:8080/register', {
             username: usernameReg,
             password: passwordReg,
             email: emailReg
@@ -53,7 +51,7 @@ export default function App() {
                 <div className="terms">
                     <label className="container">
                         <input type="checkbox" />
-                            <span className="checkmark"/>
+                        <span className="checkmark"/>
                     </label>
                     <p>I agree to all statements include in <a href="#">Terms of Use</a></p>
                 </div>

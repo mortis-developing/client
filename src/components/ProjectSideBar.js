@@ -1,10 +1,9 @@
-import * as React from 'react';
-
 import '../assets/css/ProjectSideBar.css';
 
 import ProjectBanner from '../assets/images/static/ProjectBanner.jpg';
-
 import UpdateComponent from "./project-components/UpdateComponent";
+
+import * as React from 'react';
 
 class ProjectSideBar extends React.Component {
 

@@ -7,11 +7,36 @@ import ItemProjectComponent from "./menu-components/itemProjectComponent";
 
 import darkLogo from '../assets/images/dark/menu/logo.svg';
 import lightLogo from '../assets/images/light/menu/logo.svg';
+import Axios from "axios";
 
 class SideBarMenu extends React.Component {
 
-    componentDidMount() {
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            projects: '',
+            projects_length: 0,
+            projects_array: []
+        };
+
+        this.getProjectList();
+    }
+
+    componentDidMount() {
+        const loop = this.state.projects_array.map((row) => {
+            return(<ItemProjectComponent />);
+        });
+    }
+
+    getProjectList() {
+        Axios.get("http://192.168.2.106:8080/login").then((response) => {
+            response.data.user.forEach(row => this.state.projects = row.projects);
+
+            this.state.projects_length = this.state.projects.split(',').length;
+            this.state.projects.split(',').forEach(row => this.state.projects_array.push(row));
+            console.log(this.state.projects_array);
+        });
     }
 
     render() {
@@ -40,9 +65,6 @@ class SideBarMenu extends React.Component {
                 <hr />
                 <div className="center">
 
-                    <ItemProjectComponent />
-                    <ItemProjectComponent />
-                    <ItemProjectComponent />
                     <ItemProjectComponent />
 
                     <div className="item add">

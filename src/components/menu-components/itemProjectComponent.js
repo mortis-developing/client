@@ -10,12 +10,8 @@ class itemProjectComponent extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-
-    }
-
     handleClick = id => () => {
-        Axios.get("http://localhost:8080/projects/" + id).then((response) => {
+        Axios.get("http://192.168.2.106:8080/projects/" + id).then((response) => {
             console.log(response);
         });
     }
