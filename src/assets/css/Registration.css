@@ -213,6 +213,14 @@
     .reg .reg-inner .terms p {
         color: rgba(255, 255, 255, .6);
     }
+
+    .reg .reg-inner input {
+        color: white;
+    }
+
+    .reg .reg-inner input[type="text"], input[type="email"], input[type="password"] {
+        color: white;
+    }
 }
 
 @media (prefers-color-scheme: light) {
@@ -231,5 +239,13 @@
 
     .reg .reg-inner .terms p {
         color: rgba(0, 0, 0, .6);
+    }
+
+    .reg .reg-inner input {
+        color: black;
+    }
+
+    .reg .reg-inner input[type="text"], input[type="email"], input[type="password"] {
+        color: black;
     }
 }

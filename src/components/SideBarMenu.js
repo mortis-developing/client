@@ -1,6 +1,6 @@
 import '../assets/css/SideBarMenu.css';
 
-import * as React from 'react';
+import React, {useState} from 'react';
 
 // COMPONENTS
 import ItemProjectComponent from "./menu-components/itemProjectComponent";
@@ -8,6 +8,8 @@ import ItemProjectComponent from "./menu-components/itemProjectComponent";
 import darkLogo from '../assets/images/dark/menu/logo.svg';
 import lightLogo from '../assets/images/light/menu/logo.svg';
 import Axios from "axios";
+
+import thumbnail from '../assets/images/static/thumbnail.png';
 
 class SideBarMenu extends React.Component {
 
@@ -19,16 +21,10 @@ class SideBarMenu extends React.Component {
         this.state = {
             projects: '',
             projects_length: 0,
-            projects_array: []
+            projects_array: [],
         };
 
-        this.getProjectList();
-    }
-
-    componentDidMount() {
-        const loop = this.state.projects_array.map((row) => {
-            return(<ItemProjectComponent />);
-        });
+        this.getProjectList = this.getProjectList.bind(this);
     }
 
     getProjectList() {

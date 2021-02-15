@@ -7,6 +7,10 @@ import Main from "./pages/Main";
 
 class App extends React.Component {
 
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <Router>
@@ -19,7 +23,5 @@ class App extends React.Component {
         );
     }
 }
-
-export let isLoading = true;
 
 export default App;

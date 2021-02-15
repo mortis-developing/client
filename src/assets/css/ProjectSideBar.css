@@ -138,6 +138,10 @@
     font-weight: 500;
 }
 
+.head .head-content .head-content-actions .pagesettings:active {
+    transform: scale(.85);
+}
+
 .head .head-content .head-content-actions .settings {
     width: 35px;
     height: 35px;
@@ -260,7 +264,11 @@
     margin: 0;
 }
 
-/**** main-section *********************/
+.update-item:active {
+    transform: scale(.90);
+}
+
+    /**** main-section *********************/
 
 .main-content .head .right .publish {
     width: 100px;

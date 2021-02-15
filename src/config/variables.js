@@ -1,3 +1,5 @@
-let isLoading = false;
+const variables = {
+    isLoading: true
+};
 
-export {isLoading};
+export default variables;

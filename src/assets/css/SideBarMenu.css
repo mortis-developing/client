@@ -50,6 +50,10 @@ html {
     transition: all 300ms;
 }
 
+.nav .item .item-icon:active {
+    transform: scale(.85);
+}
+
 .nav .item .item-icon img {
     width: 100%;
     height: 100%;
@@ -98,6 +102,12 @@ html {
     overflow-y: scroll;
     position: relative;
     height: 62%;
+}
+
+@media only screen and (max-width: 640px) {
+    .nav {
+        width: 80px;
+    }
 }
 
 @media (prefers-color-scheme: dark) {

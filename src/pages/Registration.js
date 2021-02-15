@@ -29,11 +29,14 @@ export default function App() {
             password: passwordReg,
             email: emailReg
         }).then((response) => {
-            if(response) {
-                console.log(response);
+
+            if(response.data.message) {
+                console.log("trying to create " + usernameReg + " failed with error 1");
             }
+
+            console.log("user " + usernameReg + " was created.");
+            history.push('/login');
         });
-        history.push('/login');
     }
 
     return (

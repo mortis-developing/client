@@ -33,6 +33,7 @@ function Main() {
        });
     }, []);
 
+    // isLoading
     if(isLoading) {
         return null;
     }

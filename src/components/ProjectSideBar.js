@@ -5,7 +5,23 @@ import UpdateComponent from "./project-components/UpdateComponent";
 
 import * as React from 'react';
 
+import variables from "../config/variables";
+
 class ProjectSideBar extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.follow = this.follow.bind(this);
+    }
+
+    componentDidMount() {
+        variables.isLoading = false;
+    }
+
+    follow() {
+        console.log('FOLLOW > (current id)');
+    }
 
     render() {
         return (
@@ -19,7 +35,7 @@ class ProjectSideBar extends React.Component {
                                 <p>Ankama</p>
                             </div>
                             <div className="head-content-actions">
-                                <input className="pagesettings" type="submit" value="Follow" />
+                                <input className="pagesettings" type="submit" onClick={this.follow} value="Follow" />
                             </div>
                         </div>
                         <p className="info-text">The World of Twelve needs all the Heroes. Get ready to join the tactical online adventure...</p>
@@ -43,6 +59,18 @@ class ProjectSideBar extends React.Component {
                 </div>
 
                 <div className="update-section">
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
+                    <UpdateComponent />
                     <UpdateComponent />
                 </div>
 
