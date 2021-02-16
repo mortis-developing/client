@@ -1,5 +1,6 @@
 const variables = {
-    isLoading: true
+    isLoading: true,
+    currentProject: []
 };
 
 export default variables;

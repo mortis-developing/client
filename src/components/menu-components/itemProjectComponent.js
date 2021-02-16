@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Axios from "axios";
+import variables from '../../config/variables';
 
 // ENABLE CREDENTIALS FOR AXIOS REQUESTS (XMLHTTPREQUEST)
 Axios.defaults.withCredentials = true;
@@ -24,9 +25,10 @@ class itemProjectComponent extends React.Component {
 
     // SEND GET REQUEST WHEN ICON IS CLICKED.
     handleClick = id => () => {
-        Axios.get("http://192.168.2.100:8080/projects/" + id).then((response) => {
-            console.log(response);
+        Axios.get("http://192.168.2.100:8080/projects/get/" + id).then((response) => {
+            variables.currentProject.push(response);
         });
+        console.log(variables.currentProject);
     }
 
     click = (e, { name }) => this.setState({activeItem: name});
@@ -57,7 +59,6 @@ class itemProjectComponent extends React.Component {
                     });
                 });
             }
-            console.log(this.state.projects_image);
         });
     }
 
@@ -69,7 +70,7 @@ class itemProjectComponent extends React.Component {
         for (const [index, value] of this.state.projects_array.entries()) {
             items.push(
                 <div className="item project" key={index}>
-                    <div className="item-icon" id="list-item" onClick={this.handleClick(value)}>
+                    <div className="item-icon expand" id="list-item" data-title="item-tooltip" onClick={this.handleClick(value)}>
                         <img src={`/images/static/${this.state.projects_images[index]}`} alt="thumbnail" />
                     </div>
                 </div>

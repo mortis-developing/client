@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from "react";
+
 import Axios from "axios";
 
 import NormalUser from "../login-components/NormalUser";
@@ -6,7 +7,7 @@ import Writer from "../login-components/Writer";
 import Admin from "../login-components/Admin";
 import Login from "../pages/Login";
 
-import { useHistory } from 'react-router-dom';
+import { Router, Route, useHistory } from 'react-router-dom';
 
 function Main() {
 

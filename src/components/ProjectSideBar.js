@@ -3,6 +3,7 @@ import '../assets/css/ProjectSideBar.css';
 import UpdateComponent from "./project-components/UpdateComponent";
 
 import * as React from 'react';
+import Axios from 'axios';
 
 import variables from "../config/variables";
 
@@ -20,6 +21,9 @@ class ProjectSideBar extends React.Component {
 
     follow() {
         console.log('FOLLOW > (current id)');
+        variables.currentProject.forEach((row) => {
+            console.log(row.data.results);
+        });
     }
 
     render() {
