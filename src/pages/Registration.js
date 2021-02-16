@@ -4,16 +4,6 @@ import React, {useState} from 'react';
 import Axios from 'axios';
 import {useHistory} from 'react-router-dom';
 
-import google_dark from '../assets/images/dark/registration/google.svg';
-import github_dark from '../assets/images/dark/registration/github.svg';
-import facebook_dark from '../assets/images/dark/registration/facebook.svg';
-import twitter_dark from '../assets/images/dark/registration/twitter.svg';
-
-import google_light from '../assets/images/light/registration/google.svg';
-import github_light from '../assets/images/light/registration/github.svg';
-import facebook_light from '../assets/images/light/registration/facebook.svg';
-import twitter_light from '../assets/images/light/registration/twitter.svg';
-
 export default function App() {
 
     const [usernameReg, setUsernameReg] = useState('');
@@ -62,20 +52,20 @@ export default function App() {
                 <div className="bottom">
                     <p>Or continue with these social profile</p>
                     <picture>
-                        <source srcSet={google_light} media="(prefers-color-scheme: light)"/>
-                        <img src={google_dark} alt="google"/>
+                        <source srcSet='/images/light/registration/github.svg' media="(prefers-color-scheme: light)"/>
+                        <img src='/images/light/registration/github.svg' alt="google"/>
                     </picture>
                     <picture>
-                        <source srcSet={facebook_light} media="(prefers-color-scheme: light)"/>
-                        <img src={facebook_dark} alt="google"/>
+                        <source srcSet='/images/light/registration/github.svg' media="(prefers-color-scheme: light)"/>
+                        <img src='/images/light/registration/github.svg' alt="google"/>
                     </picture>
                     <picture>
-                        <source srcSet={twitter_light} media="(prefers-color-scheme: light)"/>
-                        <img src={twitter_dark} alt="google"/>
+                        <source srcSet='/images/light/registration/github.svg' media="(prefers-color-scheme: light)"/>
+                        <img src='/images/light/registration/github.svg' alt="google"/>
                     </picture>
                     <picture>
-                        <source srcSet={github_light} media="(prefers-color-scheme: light)"/>
-                        <img src={github_dark} alt="google"/>
+                        <source srcSet='/images/light/registration/github.svg' media="(prefers-color-scheme: light)"/>
+                        <img src="/images/dark/registration/github.svg" alt="google"/>
                     </picture>
                 </div>
             </div>

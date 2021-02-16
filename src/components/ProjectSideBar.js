@@ -1,6 +1,5 @@
 import '../assets/css/ProjectSideBar.css';
 
-import ProjectBanner from '../assets/images/static/ProjectBanner.jpg';
 import UpdateComponent from "./project-components/UpdateComponent";
 
 import * as React from 'react';
@@ -27,7 +26,7 @@ class ProjectSideBar extends React.Component {
         return (
             <div className="info-block">
                 <div className="head">
-                    <img src={ ProjectBanner } alt="error" />
+                    <img src='/images/static/ProjectBanner.jpg' alt="error" />
                     <div className="head-content">
                         <div className="top">
                             <div className="head-content-top">

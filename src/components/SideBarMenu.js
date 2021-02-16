@@ -5,11 +5,8 @@ import React, {useState} from 'react';
 // COMPONENTS
 import ItemProjectComponent from "./menu-components/itemProjectComponent";
 
-import darkLogo from '../assets/images/dark/menu/logo.svg';
-import lightLogo from '../assets/images/light/menu/logo.svg';
+// IMAGES
 import Axios from "axios";
-
-import thumbnail from '../assets/images/static/thumbnail.png';
 
 class SideBarMenu extends React.Component {
 
@@ -17,25 +14,6 @@ class SideBarMenu extends React.Component {
         super(props);
 
         Axios.defaults.withCredentials = true;
-
-        this.state = {
-            projects: '',
-            projects_length: 0,
-            projects_array: [],
-        };
-
-        this.getProjectList = this.getProjectList.bind(this);
-    }
-
-    getProjectList() {
-        Axios.defaults.withCredentials = true;
-        Axios.get("http://192.168.2.100:8080/login").then((response) => {
-            response.data.user.forEach(row => this.state.projects = row.projects);
-
-            this.state.projects_length = this.state.projects.split(',').length;
-            this.state.projects.split(',').forEach(row => this.state.projects_array.push(row));
-            console.log(this.state.projects_array);
-        });
     }
 
     render() {
@@ -44,8 +22,8 @@ class SideBarMenu extends React.Component {
                 <div className="item top">
                     <div className="item-icon" id="item-top">
                         <picture>
-                            <source srcSet={lightLogo} media="(prefers-color-scheme: light)"/>
-                            <img src={darkLogo} alt="error" />
+                            <source srcSet='/images/light/menu/logo.svg' media="(prefers-color-scheme: light)"/>
+                            <img src='/images/dark/menu/logo.svg' alt="error" />
                         </picture>
                     </div>
                     <div className="action"><span className="material-icons">keyboard_arrow_down</span></div>
