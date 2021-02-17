@@ -1,17 +1,19 @@
 import '../assets/css/SideBarMenu.css';
 
-import * as React from 'react';
+import React, {useState} from 'react';
 
 // COMPONENTS
 import ItemProjectComponent from "./menu-components/itemProjectComponent";
 
-import darkLogo from '../assets/images/dark/menu/logo.svg';
-import lightLogo from '../assets/images/light/menu/logo.svg';
+// IMAGES
+import Axios from "axios";
 
 class SideBarMenu extends React.Component {
 
-    componentDidMount() {
+    constructor(props) {
+        super(props);
 
+        Axios.defaults.withCredentials = true;
     }
 
     render() {
@@ -20,8 +22,8 @@ class SideBarMenu extends React.Component {
                 <div className="item top">
                     <div className="item-icon" id="item-top">
                         <picture>
-                            <source srcSet={lightLogo} media="(prefers-color-scheme: light)"/>
-                            <img src={darkLogo} alt="error" />
+                            <source srcSet='/images/light/menu/logo.svg' media="(prefers-color-scheme: light)"/>
+                            <img src='/images/dark/menu/logo.svg' alt="error" />
                         </picture>
                     </div>
                     <div className="action"><span className="material-icons">keyboard_arrow_down</span></div>
@@ -41,18 +43,23 @@ class SideBarMenu extends React.Component {
                 <div className="center">
 
                     <ItemProjectComponent />
-                    <ItemProjectComponent />
-                    <ItemProjectComponent />
-                    <ItemProjectComponent />
 
+                    <div className="item">
+                        <div className="item-icon-error expand" data-title="Error">
+                            <span className="material-icons">priority_high</span>
+                        </div>
+                    </div>
+                    
                     <div className="item add">
-                        <div className="item-icon">
+                        <div className="item-icon-add">
                             <span className="material-icons">add</span>
                         </div>
                     </div>
 
                 </div>
+                <hr />
                 <div className="item bottom">
+                    <hr />
                     <div className="item-icon">
                         <span className="material-icons">settings</span>
                     </div>

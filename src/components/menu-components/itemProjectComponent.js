@@ -1,32 +1,80 @@
 import React from 'react';
 
-import thumbnail from '../../assets/images/static/thumbnail.png';
-
 import Axios from "axios";
+import variables from '../../config/variables';
+
+// ENABLE CREDENTIALS FOR AXIOS REQUESTS (XMLHTTPREQUEST)
+Axios.defaults.withCredentials = true;
 
 class itemProjectComponent extends React.Component {
 
+    state = {};
+
     constructor(props) {
         super(props);
+
+        Axios.defaults.withCredentials = true;
+
+        // PROJECTS_IMAGES = ARRAY WITHE THE SRC TO THE PROJECT IMAGES
+        // PROJECTS_ARRAY = ARRAY WITH THE ID'S OF THE PROJECTS IN THE LIST OF THE USER.
+        this.state = {
+            userID: 0,
+            projects: []
+        };
+    }
+
+    // SEND GET REQUEST WHEN ICON IS CLICKED.
+    handleClick = id => () => {
+        Axios.get("http://192.168.2.100:8080/projects/get/" + id).then((response) => {
+            variables.currentProject.length = 0;
+            variables.currentProject.push(response);
+        });
+        console.log(variables.currentProject);
     }
 
     componentDidMount() {
 
-    }
+        // SEND REQUEST TO /LOGIN SERVER
+        Axios.get('http://192.168.2.100:8080/login').then((response) => {
 
-    handleClick = id => () => {
-        Axios.get("http://localhost:8080/projects/" + id).then((response) => {
-            console.log(response);
+            response.data.user.forEach((row) => {
+                // SAVE THE CURRENT USER ID;
+                this.state.userID = row.id;
+            });
+            
+            // NEW LOAD PROJECTS => TEST
+            Axios.get('http://192.168.2.100:8080/users/list/' + this.state.userID).then((response) => {
+                response.data.forEach((row) => {
+                    this.setState({projects: this.state.projects.concat(row)});
+                })
+            }).catch((error) => {
+                console.log(error);
+            })
         });
     }
 
     render() {
-        return (
-            <div className="item project">
-                <div className="item-icon" onClick={this.handleClick(1)}>
-                    <img src={ thumbnail } alt="project-banner" />
+        //../../assets/images/static/thumbnail.png
+        // ARRAY WITH ALL THE PROJECTS WERE ARE IN THE LIST OF THE USER AS OBJECT.
+
+        const items = [];
+
+        for (const [index, value] of this.state.projects.entries()) {
+            items.push(
+                <div className="item project" key={index}>
+                    <div className="item-icon expand" id="list-item" data-title={value.project_name} onClick={this.handleClick(value.id)}>
+                        <img src={`/images/static/${value.image}`} alt="thumbnail" />
+                    </div>
                 </div>
-            </div>
+            );
+        }
+        
+
+        // RENDER THE ITEMS ARRAY.
+        return (
+            <>
+                {items}
+            </>
         );
     }
 }

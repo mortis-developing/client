@@ -3,9 +3,60 @@
 }
 
 #root {
+    width: 100%;
     margin: 0;
     display: grid;
     grid-template-columns: 80px 1fr; /*** 400px ****/
     height: 100vh;
     overflow: hidden;
 }
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.loader {
+    position: absolute;
+    top: calc(50% - 1em);
+    left: calc(50% - 1em);
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    animation: load8 1.1s infinite linear;
+    transition: opacity 0.3s;
+}
+
+.loader--hide {
+    display: none;
+    visibility: hidden;
+}
+
+@keyframes load8 {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .loader {
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-left: 2px solid #ffffff;
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .loader {
+        border: 2px solid rgba(0, 0, 0, 0.2);
+        border-left: 2px solid #000000;
+    }
+}
+
+* {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+

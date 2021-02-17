@@ -7,15 +7,15 @@ import Main from "./pages/Main";
 
 class App extends React.Component {
 
-    componentDidMount() {
-
+    constructor(props) {
+        super(props);
     }
 
     render() {
         return (
             <Router>
                 <Route path="/registration" exact render={() => <Registration />} />
-                <Route path="/login" exact render={() => <Login />} />
+                <Route path="/login" render={() => <Login />} />
                 <Route exact path="/">
                     <Main />
                 </Route>
