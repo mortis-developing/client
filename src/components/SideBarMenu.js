@@ -44,14 +44,22 @@ class SideBarMenu extends React.Component {
 
                     <ItemProjectComponent />
 
+                    <div className="item">
+                        <div className="item-icon-error expand" data-title="Error">
+                            <span className="material-icons">priority_high</span>
+                        </div>
+                    </div>
+                    
                     <div className="item add">
-                        <div className="item-icon">
+                        <div className="item-icon-add">
                             <span className="material-icons">add</span>
                         </div>
                     </div>
 
                 </div>
+                <hr />
                 <div className="item bottom">
+                    <hr />
                     <div className="item-icon">
                         <span className="material-icons">settings</span>
                     </div>
