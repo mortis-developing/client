@@ -104,6 +104,10 @@ html {
     height: auto;
 }
 
+.nav .item.hidden {
+    display: none;
+}
+
 /*** TOOLTIP ********************/
 .center .item-icon:before, .item-icon:after,
 .center .item-icon-error:before, .item-icon-error:after {

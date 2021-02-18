@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Axios from "axios";
 import variables from '../../config/variables';
@@ -19,7 +19,8 @@ class itemProjectComponent extends React.Component {
         // PROJECTS_ARRAY = ARRAY WITH THE ID'S OF THE PROJECTS IN THE LIST OF THE USER.
         this.state = {
             userID: 0,
-            projects: []
+            projects: [],
+            items: [],
         };
     }
 
@@ -33,7 +34,6 @@ class itemProjectComponent extends React.Component {
     }
 
     componentDidMount() {
-
         // SEND REQUEST TO /LOGIN SERVER
         Axios.get('http://192.168.2.100:8080/login').then((response) => {
 
@@ -41,15 +41,15 @@ class itemProjectComponent extends React.Component {
                 // SAVE THE CURRENT USER ID;
                 this.state.userID = row.id;
             });
-            
-            // NEW LOAD PROJECTS => TEST
+
+            // LOAD PROJECTS
             Axios.get('http://192.168.2.100:8080/users/list/' + this.state.userID).then((response) => {
                 response.data.forEach((row) => {
                     this.setState({projects: this.state.projects.concat(row)});
                 })
             }).catch((error) => {
                 console.log(error);
-            })
+            });
         });
     }
 
@@ -68,7 +68,6 @@ class itemProjectComponent extends React.Component {
                 </div>
             );
         }
-        
 
         // RENDER THE ITEMS ARRAY.
         return (

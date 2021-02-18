@@ -9,29 +9,28 @@ import Login from "../pages/Login";
 
 import { Router, Route, useHistory } from 'react-router-dom';
 
-function Main() {
+export default function Main() {
 
     const [isLoading, setLoading] = useState(true);
-
     const [role, setRole] = useState("");
 
     Axios.defaults.withCredentials = true;
     let history = useHistory();
 
     useEffect(() => {
-       Axios.get("http://192.168.2.100:8080/login").then((response) => {
-           if(response.data.loggedIn === true) {
-               setRole(response.data.user[0].role);
+        Axios.get("http://192.168.2.100:8080/login").then((response) => {
+            if(response.data.loggedIn === true) {
+                setRole(response.data.user[0].role);
 
-               const loader = document.querySelector('.loader');
-               if(loader) {
-                   loader.remove();
-                   setLoading(false);
-               }
-           } else {
+                const loader = document.querySelector('.loader');
+                if(loader) {
+                    loader.remove();
+                    setLoading(false);
+                }
+            } else {
                 history.push('/login');
-           }
-       });
+            }
+        });
     }, []);
 
     // isLoading
@@ -48,5 +47,3 @@ function Main() {
         </>
     );
 }
-
-export default Main;

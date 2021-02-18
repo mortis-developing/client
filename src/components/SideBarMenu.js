@@ -44,7 +44,7 @@ class SideBarMenu extends React.Component {
 
                     <ItemProjectComponent />
 
-                    <div className="item">
+                    <div className="item hidden">
                         <div className="item-icon-error expand" data-title="Error">
                             <span className="material-icons">priority_high</span>
                         </div>

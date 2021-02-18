@@ -7,6 +7,8 @@ import Main from "./pages/Main";
 
 class App extends React.Component {
 
+    state = {};
+
     constructor(props) {
         super(props);
     }
