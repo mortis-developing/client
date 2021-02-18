@@ -6,6 +6,7 @@ import * as React from 'react';
 import Axios from 'axios';
 
 import variables from "../config/variables";
+import {refreshList} from './menu-components/itemProjectComponent';
 
 class ProjectSideBar extends React.Component {
 
@@ -20,10 +21,7 @@ class ProjectSideBar extends React.Component {
     }
 
     follow() {
-        console.log('FOLLOW > (current id)');
-        variables.currentProject.forEach((row) => {
-            console.log(row.data.results);
-        });
+        refreshList();
     }
 
     render() {
@@ -62,18 +60,6 @@ class ProjectSideBar extends React.Component {
                 </div>
 
                 <div className="update-section">
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
-                    <UpdateComponent />
                     <UpdateComponent />
                 </div>
 

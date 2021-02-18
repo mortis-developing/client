@@ -42,7 +42,7 @@ class SideBarMenu extends React.Component {
                 <hr />
                 <div className="center">
 
-                    <ItemProjectComponent />
+                    <ItemProjectComponent onRefreshList={this.refreshList} />
 
                     <div className="item hidden">
                         <div className="item-icon-error expand" data-title="Error">

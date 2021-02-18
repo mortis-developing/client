@@ -18,6 +18,7 @@ export default function Main() {
     let history = useHistory();
 
     useEffect(() => {
+
         Axios.get("http://192.168.2.100:8080/login").then((response) => {
             if(response.data.loggedIn === true) {
                 setRole(response.data.user[0].role);

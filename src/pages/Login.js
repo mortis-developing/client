@@ -4,8 +4,6 @@ import React, {useEffect, useState} from 'react';
 import Axios from 'axios';
 
 import { useHistory } from 'react-router-dom';
-import socketIOClient from "socket.io-client";
-const ENDPOINT = "http://192.168.2.100:8080";
 
 export default function Login() {
 
@@ -13,7 +11,6 @@ export default function Login() {
     const [password, setPassword] = useState('');
 
     const [loginStatus, setLoginStatus] = useState('');
-    const [response, setResponse] = useState('');
 
     Axios.defaults.withCredentials = true;
     let history = useHistory();
@@ -36,20 +33,6 @@ export default function Login() {
     };
 
     useEffect(() => {
-        const socket = socketIOClient(ENDPOINT, {
-            withCredentials: true,
-            extraHeaders: { "my-custom-header": "abcd" }
-        });
-
-        socket.on("FromAPI", data => {
-            setResponse(data);
-            // console.log(data);
-        });
-
-        socket.on("connect", () => {
-            setResponse(socket.id);
-        });
-
         Axios.get("http://192.168.2.100:8080/login").then((response) => {
             if(response.data.loggedIn) {
                 setLoginStatus(response.data.user[0].username);
@@ -63,7 +46,6 @@ export default function Login() {
                 <div className="span-div"><span className="material-icons" id="span-top">check</span></div>
                 <div className="login-head">
                     <h3>Welcome back</h3>
-                    <time dateTime={response}>{response}</time>
                     <p>Please enter your username and password to sign in to your account. If you dont know your username you can use the email address of your account.</p>
                 </div>
                 <input type="text" name="username" placeholder="Enter your username" onChange={(e) => { setUsername(e.target.value); }} /><br />
