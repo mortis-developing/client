@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 
-import Axios from "axios";
-import variables from '../../config/variables';
+import axios from "axios";
+import ProjectItemComponent from './ProjectItemComponent';
 
-// ENABLE CREDENTIALS FOR AXIOS REQUESTS (XMLHTTPREQUEST)
-Axios.defaults.withCredentials = true;
+axios.defaults.withCredentials = true;
 
 class itemProjectComponent extends React.Component {
 
@@ -13,81 +12,40 @@ class itemProjectComponent extends React.Component {
     constructor(props) {
         super(props);
 
-        Axios.defaults.withCredentials = true;
-
-        // PROJECTS_IMAGES = ARRAY WITHE THE SRC TO THE PROJECT IMAGES
-        // PROJECTS_ARRAY = ARRAY WITH THE ID'S OF THE PROJECTS IN THE LIST OF THE USER.
         this.state = {
             userID: 0,
-            projects: [],
-        };
-
-        this.refreshList = this.refreshList.bind(this);
-    }
-
-    // SEND GET REQUEST WHEN ICON IS CLICKED.
-    handleClick = id => () => {
-        Axios.get("http://192.168.2.100:8080/projects/get/" + id).then((response) => {
-            variables.currentProject.length = 0;
-             variables.currentProject.push(response);
-        });
-        console.log(variables.currentProject);
-        this.refreshList();
-    }
-
-    refreshList() {
-        // SEND REQUEST TO /LOGIN SERVER
-        Axios.get('http://192.168.2.100:8080/login').then((response) => {
-    
-            response.data.user.forEach((row) => {
-                // SAVE THE CURRENT USER ID;
-                this.state.userID = row.id;
-            });
-    
-            // LOAD PROJECTS
-            Axios.get('http://192.168.2.100:8080/users/list/' + this.state.userID).then((response) => {
-                response.data.forEach((row) => {
-                    this.setState({projects: this.state.projects.concat(row)});
-                })
-            }).catch((error) => {
-                console.log(error);
-            });
-        });
+            projectIDs: ''
+        }
     }
 
     componentDidMount() {
-        this.refreshList();
-    }
-
-    componentDidUpdate() {
-       // this.refreshList();
+        axios.get('http://192.168.2.100:8080/login').then((response) => {
+            response.data.user.forEach((row) => {
+                this.state.userID = row.id;
+                this.state.projectIDs = row.projects;
+            });
+        });
     }
 
     render() {
-        //../../assets/images/static/thumbnail.png
-        // ARRAY WITH ALL THE PROJECTS WERE ARE IN THE LIST OF THE USER AS OBJECT.
 
-        const items = [];
+        let projects = [];
 
-        let ComponentAdded = () => this.refreshList();
-
-        for (const [index, value] of this.state.projects.entries()) {
-            items.push(
-                <div className="item project" key={index} ComponentAdded>
-                    <div className="item-icon expand" id="list-item" data-title={value.project_name} onClick={this.handleClick(value.id)}>
-                        <img src={`/images/static/${value.image}`} alt="thumbnail" />
-                    </div>
-                </div>
-            );
+        let pid = this.state.projectIDs.split(',');
+        for(const [index, value] of pid.entries()) {
+            axios.get('http://192.168.2.100:8080/projects/' + value).then((response) => {
+                projects.push(
+                    response
+                );    
+            });
         }
 
-        // RENDER THE ITEMS ARRAY.
         return (
-            <>
-                {items}
-            </>
+            <div className="holder">
+                {projects.data}
+            </div>
         );
     }
 }
 
-export default {itemProjectComponent, refreshList};
+export default itemProjectComponent;

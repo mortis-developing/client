@@ -21,7 +21,7 @@ class ProjectSideBar extends React.Component {
     }
 
     follow() {
-        refreshList();
+       
     }
 
     render() {
@@ -41,9 +41,8 @@ class ProjectSideBar extends React.Component {
                         </div>
                         <p className="info-text">The World of Twelve needs all the Heroes. Get ready to join the tactical online adventure...</p>
                         <div className="platforms">
-                            <span className="material-icons">android</span>
-                            <span className="material-icons">android</span>
-                            <span className="material-icons">android</span>
+                            <img src="/images/static/android.svg" alt="windows" />
+                            <img src="/images/static/windows.svg" alt="windows" />
                         </div>
                     </div>
                 </div>

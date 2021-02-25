@@ -91,12 +91,15 @@
     padding-bottom: 15px;
 }
 
-.head .head-content .platforms span {
+.head .head-content .platforms span, .head .head-content .platforms img {
     margin-right: 10px;
     font-size: 22px;
+    width: 15px;
+    height: auto;
 }
 
-.head .head-content .platforms span:hover {
+.head .head-content .platforms span:hover, 
+.head .head-content .platforms img:hover {
     cursor: pointer;
 
     transition: all 300ms;
@@ -124,7 +127,7 @@
 
 .head img {
     width: 100%;
-    height: 180px;
+    height: 220px;
 }
 
 /*** SCROLL-BAR ****************/
@@ -483,11 +486,13 @@
         color: rgba(255, 255, 255, .6);
     }
 
-    .head .head-content .platforms span {
+    .head .head-content .platforms span,
+    .head .head-content .platforms img {
         color: rgba(255, 255, 255, .3);
     }
 
-    .head .head-content .platforms span:hover {
+    .head .head-content .platforms span:hover,
+    .head .head-content .platforms img:hover {
         color: white;
     }
 

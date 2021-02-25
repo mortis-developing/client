@@ -3,7 +3,8 @@ import '../assets/css/SideBarMenu.css';
 import React, {useState} from 'react';
 
 // COMPONENTS
-import ItemProjectComponent from "./menu-components/itemProjectComponent";
+import ProjectHolderComponent from "./menu-components/ProjectHolderComponent";
+import ItemProjectComponent from './menu-components/itemProjectComponent';
 
 // IMAGES
 import Axios from "axios";
@@ -42,7 +43,7 @@ class SideBarMenu extends React.Component {
                 <hr />
                 <div className="center">
 
-                    <ItemProjectComponent onRefreshList={this.refreshList} />
+                    <ProjectHolderComponent />
 
                     <div className="item hidden">
                         <div className="item-icon-error expand" data-title="Error">
